@@ -14,7 +14,10 @@ def QString_SummaryProvider(valobj, internal_dict):
         V = G[X]
         if V == 0:
           continue
-        strval += unichr(V)
+        try:
+          strval += chr(V)
+        except NameError:
+          strval += unichr(V)
     except Exception as e:
       pass
     strval = strval + '"'
